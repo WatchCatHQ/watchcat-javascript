@@ -1,14 +1,14 @@
-# ![](https://github.com/WatchCatHQ/watchcat-assets/blob/main/watchcat_logo_tiny.png?raw=true) @watchcathq/react
+# ![](https://github.com/WatchCatHQ/watchcat-assets/blob/main/watchcat_logo_tiny.png?raw=true) @watchcathq/vue
 
-React SDK for [watchcat.io](https://watchcat.io).
+Vue SDK for [watchcat.io](https://watchcat.io).
 
 ## Installation and Usage
 
 To install the package, use your preferred package manager:
 
 ```shell
-npm install @watchcathq/react
-yarn add @watchcathq/react
+npm install @watchcathq/vue
+yarn add @watchcathq/vue
 ```
 
 ## Basic usage
@@ -16,21 +16,23 @@ yarn add @watchcathq/react
 To set up the package, import it and initialize it with your application token:
 
 ```javascript
-import WatchCat from "@watchcathq/react";
+import WatchCat from "@watchcathq/vue";
 
 WatchCat.init({
     token: "APP_TOKEN"
 })
 ```
 
-Wrap your application with the `WatchCat.ErrorBoundary` component and specify the `fallback` component that will be displayed in case of an error:
+## Error Handler
 
-https://reactjs.org/docs/error-boundaries.html
+Assign a global handler for uncaught errors propagating from within the application:
 
-```tsx
-<WatchCat.ErrorBoundary fallback={fallback}>
-    <YourApplication />
-</WatchCat.ErrorBoundary>
+```javascript
+// app init
+
+app.config.errorHandler = WatchCat.errorHandler
+
+// app mount
 ```
 
 ## Logging
@@ -58,7 +60,7 @@ WatchCat
 To translate a stack trace from bundled code to its original position and obtain meaningful information, you need to provide source maps (see https://web.dev/source-maps/).
 
 First, ensure that source maps are generated during the build phase. In your build directory, there should be a file ending with `.map`.
-For example, for a React build, the output looks like this:
+For example, for a Vue build, the output looks like this:
 
 ```shell
 main.c1411ba0.js

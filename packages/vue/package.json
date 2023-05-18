@@ -1,0 +1,21 @@
+{
+    "name": "@watchcathq/vue",
+    "version": "1.0.0",
+    "description": "",
+    "source": "src/index.ts",
+    "main": "dist/watchcat.mjs",
+    "module": "dist/watchcat.mjs",
+    "types": "types/index.d.ts",
+    "scripts": {
+        "build": "rimraf dist && rimraf types && microbundle --format esm",
+        "dev": "microbundle watch",
+        "publish-package": "npm test && npm run build && npm publish --access public --no-git-checks",
+        "publish-package:dry-run": "npm test && npm run build && npm publish --access public --no-git-checks --dry-run"
+    },
+    "devDependencies": {
+        "@watchcathq/core": "*",
+        "vue": "^2.7.14"
+    },
+    "author": "hello@watchcat.io",
+    "license": "MIT"
+}

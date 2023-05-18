@@ -36,7 +36,6 @@
   "scripts": {
     "build": "rimraf dist && microbundle --format esm,iife,umd --name WatchCat",
     "dev": "microbundle watch",
-    "test": "jest",
     "publish-package": "npm test && npm run build && npm publish --access public --no-git-checks",
     "publish-package:dry-run": "npm test && npm run build && npm publish --access public --no-git-checks --dry-run"
   }
