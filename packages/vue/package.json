@@ -8,9 +8,7 @@
     "types": "types/index.d.ts",
     "scripts": {
         "build": "rimraf dist && rimraf types && microbundle --format esm",
-        "dev": "microbundle watch",
-        "publish-package": "npm test && npm run build && npm publish --access public --no-git-checks",
-        "publish-package:dry-run": "npm test && npm run build && npm publish --access public --no-git-checks --dry-run"
+        "dev": "microbundle watch"
     },
     "devDependencies": {
         "@watchcathq/core": "^1.0.0-alpha.5",

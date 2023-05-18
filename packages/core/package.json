@@ -32,9 +32,7 @@
         "build": "rimraf dist && npm run build:cjs && npm run build:esm",
         "build:cjs": "tsc --declaration --project tsconfig.json",
         "build:esm": "tsc --declaration --project tsconfig.esm.json",
-        "test": "jest",
-        "publish-package": "npm ci && npm run build && pnpm publish --access public --no-git-checks",
-        "publish-package:dry-run": "npm ci && npm run build && npm publish --access public --no-git-checks --dry-run"
+        "test": "jest"
     },
     "publishConfig": {
         "access": "public"
