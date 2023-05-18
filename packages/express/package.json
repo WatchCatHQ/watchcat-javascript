@@ -1,6 +1,6 @@
 {
     "name": "@watchcathq/express",
-    "version": "0.2.4",
+    "version": "1.0.0-alpha.6",
     "author": "hello@watchcat.io",
     "type": "commonjs",
     "main": "dist/index.js",
@@ -22,7 +22,7 @@
         "typescript": "^4.9.4"
     },
     "dependencies": {
-        "@watchcathq/node": "*",
+        "@watchcathq/node": "^1.0.0-alpha.6",
         "express": "^4.18.2"
     }
 }
