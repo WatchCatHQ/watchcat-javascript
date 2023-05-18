@@ -1,6 +1,6 @@
 {
-    "name": "@watchcat/browser",
-    "version": "1.0.0-alpha.4",
+    "name": "@watchcathq/browser",
+    "version": "1.0.0-alpha.5",
     "description": "",
     "main": "dist/watchcat.js",
     "module": "dist/watchcat.mjs",
@@ -42,5 +42,5 @@
     "publishConfig": {
         "access": "public"
     },
-    "gitHead": "4ce8c6a01ee12916d94152695912b256a65ffb43"
+    "gitHead": "94094a1bb68af1654f95e3135136cbcab83790e9"
 }
