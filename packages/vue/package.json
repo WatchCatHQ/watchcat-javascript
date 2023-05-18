@@ -1,6 +1,6 @@
 {
     "name": "@watchcathq/vue",
-    "version": "1.0.0-alpha.0",
+    "version": "1.0.0-alpha.1",
     "description": "",
     "source": "src/index.ts",
     "main": "dist/watchcat.mjs",
@@ -13,9 +13,10 @@
         "publish-package:dry-run": "npm test && npm run build && npm publish --access public --no-git-checks --dry-run"
     },
     "devDependencies": {
-        "@watchcathq/core": "^1.0.0-alpha.0",
+        "@watchcathq/core": "^1.0.0-alpha.1",
         "vue": "^2.7.14"
     },
     "author": "hello@watchcat.io",
-    "license": "MIT"
+    "license": "MIT",
+    "gitHead": "2685cf8660f247cbd7d433804950cd3190efdebb"
 }

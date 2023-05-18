@@ -1,6 +1,6 @@
 {
     "name": "@watchcathq/core",
-    "version": "1.0.0-alpha.0",
+    "version": "1.0.0-alpha.1",
     "main": "dist/index.js",
     "module": "dist/esm/index.js",
     "types": "dist/index.d.ts",
@@ -35,5 +35,6 @@
         "test": "jest",
         "publish-package": "npm ci && npm run build && pnpm publish --access public --no-git-checks",
         "publish-package:dry-run": "npm ci && npm run build && npm publish --access public --no-git-checks --dry-run"
-    }
+    },
+    "gitHead": "2685cf8660f247cbd7d433804950cd3190efdebb"
 }
