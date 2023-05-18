@@ -1,6 +1,6 @@
 {
     "name": "@watchcat/browser",
-    "version": "1.0.0-alpha.1",
+    "version": "1.0.0-y.0",
     "description": "",
     "main": "dist/watchcat.js",
     "module": "dist/watchcat.mjs",
