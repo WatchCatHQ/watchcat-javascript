@@ -18,5 +18,8 @@
     },
     "author": "hello@watchcat.io",
     "license": "MIT",
-    "gitHead": "2685cf8660f247cbd7d433804950cd3190efdebb"
+    "publishConfig": {
+        "access": "public"
+    },
+    "gitHead": "25b921666dc5000fb366dce1fcfa472097de01bc"
 }
