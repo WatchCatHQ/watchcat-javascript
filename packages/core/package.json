@@ -1,6 +1,6 @@
 {
     "name": "@watchcathq/core",
-    "version": "1.0.0-1.0.0-alpha.2.0",
+    "version": "1.0.0-alpha.3",
     "main": "dist/index.js",
     "module": "dist/esm/index.js",
     "types": "dist/index.d.ts",
