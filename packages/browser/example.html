@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>watchcat is watching...</title>
+</head>
+
+<body>
+<h1>WatchCat browser SDK test</h1>
+<p>
+    <button id="exceptionBtn">Throw exception</button>
+</p>
+<p>
+    <button id="errorBtn">Send error</button>
+</p>
+<p>
+    <button id="warnBtn">Send warning</button>
+</p>
+
+<script src="dist/watchcat.js"></script>
+<script>
+    WatchCat.init({
+        token: "app_12345",
+        debug: true
+    })
+    document.getElementById('exceptionBtn').addEventListener('click', function () {
+        throw new Error('exception from browser sdk!')
+    })
+    document.getElementById('errorBtn').addEventListener('click', function () {
+        WatchCat.error('error from browser sdk!')
+    })
+    document.getElementById('warnBtn').addEventListener('click', function () {
+        WatchCat.warn('warning from browser sdk!')
+    })
+</script>
+</body>
+
+</html>

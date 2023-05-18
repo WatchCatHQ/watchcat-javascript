@@ -6,7 +6,7 @@
     "module": "dist/watchcat.mjs",
     "types": "types/index.d.ts",
     "scripts": {
-        "build": "rimraf dist && rimraf types && npm ci && microbundle --format esm --jsx React.createElement",
+        "build": "rimraf dist && rimraf types && microbundle --format esm --jsx React.createElement",
         "dev": "microbundle watch",
         "test": "jest",
         "publish-package": "npm test && npm run build && npm publish --access public --no-git-checks",
@@ -14,7 +14,7 @@
     },
     "author": "hello@watchcat.io",
     "license": "MIT",
-    "source": "src/index.ts",
+    "source": "src/index.tsx",
     "peerDependencies": {
         "react": ">=16.8.0",
         "react-dom": ">=16.8.0"
