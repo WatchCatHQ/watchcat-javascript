@@ -1,5 +1,5 @@
 export const WatchCatPackageNames: string[] = [
-    "@watchcat/browser",
+    "@watchcathq",
     "watchcat.mjs",
     "watchcat.js",
     "watchcat.umd.js"
