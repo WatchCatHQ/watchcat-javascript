@@ -42,9 +42,7 @@ describe('WatchCatCore client test', (): void => {
         expect(body).toStrictEqual(expect.objectContaining({
             env: "production",
             level: "warn",
-            message: "warning message",
-            language: "javascript",
-            framework: "",
+            message: "warning message"
         }))
         expect(body.stacktrace.length > 1).toBeTruthy()
     });
@@ -73,8 +71,6 @@ describe('WatchCatCore client test', (): void => {
             env: "production",
             level: "error",
             message: "error message",
-            language: "javascript",
-            framework: "",
             meta: {
                 userId: 12345
             }
