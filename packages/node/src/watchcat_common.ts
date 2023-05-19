@@ -1,4 +1,4 @@
-import {WatchCatClient, WatchCatOptions} from "./types";
+import {WatchCatOptions} from "@watchcathq/core";
 import {WatchCatNodeClient} from "./watchcat_node_client";
 
 export const InitWatchCatClient = (options: Partial<WatchCatOptions>) => {
@@ -8,7 +8,7 @@ export const InitWatchCatClient = (options: Partial<WatchCatOptions>) => {
     process.on("unhandledRejection", instance.createOnUnhandledRejectionHandler());
 }
 
-export const InitWatchCatClientFromInstance = (instance: WatchCatClient) => {
+export const InitWatchCatClientFromInstance = (instance: WatchCatNodeClient) => {
     (globalThis as any).WatchCat = instance
     process.on("uncaughtException", instance.createOnUncaughtExceptionHandler());
     process.on("unhandledRejection", instance.createOnUnhandledRejectionHandler());

@@ -1,7 +1,7 @@
 import SourceMaps from "./source_maps";
-import {StackFrame, WatchCatPackageNames} from "./types";
 import path from "path";
-import { promises as fs } from 'fs';
+import {promises as fs} from 'fs';
+import {StackFrame, WatchCatPackageNames} from "@watchcathq/core";
 
 export const parseStackTrace = async (sourceMaps: SourceMaps, trace: string | undefined, omitStackLevels = 0, debug: boolean = false): Promise<StackFrame[]> => {
     if (!trace) {

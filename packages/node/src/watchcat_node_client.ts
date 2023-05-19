@@ -1,12 +1,12 @@
-import {Level, StackTrace, WatchCatAppHeader, WatchCatClient, WatchCatOptions} from "./types";
-import {createPayload} from "./payload";
+import {Level, StackTrace, WatchCatAppHeader, WatchCatServerClient} from "@watchcathq/core";
 import {parseStackTrace} from "./stack_trace";
 import SourceMaps from "./source_maps";
 import axios, {AxiosRequestConfig} from "axios";
 import axiosRetry from "axios-retry";
+import {createPayload, WatchCatServerOptions} from "@watchcathq/core";
 
-export class WatchCatNodeClient implements WatchCatClient {
-    private options: WatchCatOptions
+export class WatchCatNodeClient implements WatchCatServerClient {
+    private options: WatchCatServerOptions
     private readonly sourceMaps: SourceMaps
 
     private meta: object = {}
@@ -15,12 +15,12 @@ export class WatchCatNodeClient implements WatchCatClient {
     // prevent sending error message twice
     private lastGlobalErrorMessage: string = ''
 
-    constructor(options: Partial<WatchCatOptions>) {
-        const defaultOptions: WatchCatOptions = {
+    constructor(options: Partial<WatchCatServerOptions>) {
+        const defaultOptions: WatchCatServerOptions = {
             url: "https://api.watchcat.io",
             env: process.env.NODE_ENV || "development",
             token: "",
-            logToConsole: false,
+            debug: false,
             monitors: null,
             fullMonitorSync: false,
             meta: {}
@@ -36,13 +36,13 @@ export class WatchCatNodeClient implements WatchCatClient {
             retries: 3
         })
 
-        if (options.logToConsole) {
+        if (options.debug) {
             console.log(`WatchCat 🐈 Initialized (env=${this.options.env}, url=${this.options.url})`)
         }
 
         if (this.options.monitors !== null) {
             this.syncMonitors().then(_ => {
-                if (options.logToConsole) {
+                if (options.debug) {
                     console.log(`WatchCat 🐈 Monitors synchronization finished`)
                 }
             })
@@ -50,23 +50,23 @@ export class WatchCatNodeClient implements WatchCatClient {
     }
 
     exception(e: Error) {
-        if (this.options.logToConsole) console.error(e)
+        if (this.options.debug) console.error(e)
         parseStackTrace(this.sourceMaps, e?.stack, this.stackLevelsToOmit)
             .then(stacktrace => this.sendEvent('error', e.message, stacktrace))
     }
 
     error(message: string) {
-        if (this.options.logToConsole) console.error(message)
+        if (this.options.debug) console.error(message)
         this.createStackTrace().then(stacktrace => this.sendEvent('error', message, stacktrace))
     }
 
     warn(message: string) {
-        if (this.options.logToConsole) console.warn(message)
+        if (this.options.debug) console.warn(message)
         this.createStackTrace().then(stacktrace => this.sendEvent('warn', message, stacktrace))
     }
 
     withMeta(params: object) {
-        this.meta = {...this.meta, ...this.options.meta, ...params}
+        this.meta = {...this.options.meta, ...this.meta, ...params}
         return this
     }
 
@@ -85,7 +85,7 @@ export class WatchCatNodeClient implements WatchCatClient {
 
     createOnUncaughtExceptionHandler() {
         return (e: Error) => {
-            if (this.options.logToConsole) console.error(e)
+            if (this.options.debug) console.error(e)
             this
                 .withMeta({
                     errorSource: 'Process.UncaughtExceptionHandler'
@@ -96,7 +96,7 @@ export class WatchCatNodeClient implements WatchCatClient {
 
     createOnUnhandledRejectionHandler() {
         return (reason: {} | null | undefined, promise: Promise<any>) => {
-            if (this.options.logToConsole) console.error(reason)
+            if (this.options.debug) console.error(reason)
             if (reason instanceof Error) {
                 this
                     .withMeta({
@@ -128,7 +128,6 @@ export class WatchCatNodeClient implements WatchCatClient {
             this.options.env,
             level,
             message,
-            "",
             this.meta,
             stacktrace
         )
@@ -166,11 +165,11 @@ export class WatchCatNodeClient implements WatchCatClient {
                 const status = error.response?.status;
                 const statusText = error.response?.statusText;
                 const message = error.response?.data?.message;
-                console.error(`WatchCat 🐈 Request failed with status ${status} ${statusText}: ${message}`);
+                console.error(`WatchCat request failed with status ${status} ${statusText}: ${message}`);
             } else if (error?.request) {
-                console.error('WatchCat 🐈 Request failed: no response received');
+                console.error('WatchCat request failed: no response received');
             } else {
-                console.error(`WatchCat 🐈 Request failed: ${error?.message}`);
+                console.error(`WatchCat request failed: ${error?.message}`);
             }
         }
     }

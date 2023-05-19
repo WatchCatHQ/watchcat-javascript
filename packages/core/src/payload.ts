@@ -4,7 +4,6 @@ export function createPayload(
     env: string,
     level: Level,
     message: string,
-    framework: string | undefined,
     meta: object,
     stacktrace: StackTrace): Payload {
 
@@ -12,8 +11,6 @@ export function createPayload(
         env,
         level,
         message,
-        language: 'javascript',
-        framework: framework ?? "",
         meta,
         stacktrace,
         timestamp: Date.now()

@@ -1,8 +1,8 @@
 import {GetWatchCatClient, InitWatchCatClient} from "./watchcat_common";
-import {WatchCatOptions} from "./types";
+import {WatchCatServerOptions} from "@watchcathq/core";
 
 class WatchCat {
-    static init(options: Partial<WatchCatOptions>): void {
+    static init(options: Partial<WatchCatServerOptions>): void {
         InitWatchCatClient(options);
     }
 
@@ -29,4 +29,4 @@ class WatchCat {
     }
 }
 
-export {WatchCat as default, WatchCatOptions}
+export {WatchCat as default, WatchCatServerOptions}

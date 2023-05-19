@@ -1,7 +1,20 @@
-import {Level, StackTrace, WatchCatAppHeader, WatchCatClient, WatchCatOptions} from "./types";
+import {
+    WatchCatServerClient,
+    WatchCatOptions,
+    WatchCatServerOptions,
+    WatchCatClient,
+    WatchCatPackageNames,
+    WatchCatAppHeader,
+    Monitors,
+    MonitorInterval,
+    Level,
+    StackTrace,
+    StackFrame
+} from "./types";
 import {RateLimitedClient} from "./rate_limited_client";
 import {createPayload} from "./payload";
 import {parseStackTrace} from "./stack_trace";
+
 
 class WatchCatCoreClient implements WatchCatClient {
     protected options: WatchCatOptions
@@ -14,7 +27,8 @@ class WatchCatCoreClient implements WatchCatClient {
             url: "https://api.watchcat.io/api/event.in",
             env: "development",
             token: "",
-            debug: false
+            debug: false,
+            meta: {}
         }
         this.options = {
             ...defaultOptions,
@@ -43,7 +57,7 @@ class WatchCatCoreClient implements WatchCatClient {
     }
 
     withMeta(params: object) {
-        this.meta = {...this.meta, ...params}
+        this.meta = {...this.options.meta, ...this.meta, ...params}
         return this
     }
 
@@ -56,7 +70,6 @@ class WatchCatCoreClient implements WatchCatClient {
             this.options.env,
             level,
             message,
-            "",
             this.meta,
             stacktrace
         )
@@ -87,7 +100,16 @@ class WatchCatCoreClient implements WatchCatClient {
 
 export {
     WatchCatCoreClient,
+    WatchCatServerClient,
     WatchCatOptions,
+    WatchCatServerOptions,
     WatchCatClient,
-    Level
+    WatchCatPackageNames,
+    WatchCatAppHeader,
+    Monitors,
+    MonitorInterval,
+    Level,
+    StackTrace,
+    StackFrame,
+    createPayload
 }
