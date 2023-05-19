@@ -21,7 +21,7 @@
         "typescript": "^4.9.5"
     },
     "dependencies": {
-        "@watchcathq/node": "^1.0.0-alpha.6",
+        "@watchcathq/node": "*",
         "fastify": "^4.17.0"
     }
 }
