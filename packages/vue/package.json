@@ -1,6 +1,6 @@
 {
     "name": "@watchcathq/vue",
-    "version": "1.0.0-alpha.8",
+    "version": "1.0.0-alpha.9",
     "description": "",
     "source": "src/index.ts",
     "main": "dist/watchcat.mjs",
