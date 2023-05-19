@@ -11,14 +11,13 @@ import {
     StackTrace,
     StackFrame
 } from "./types";
-import {RateLimitedClient} from "./rate_limited_client";
 import {createPayload} from "./payload";
 import {parseStackTrace} from "./stack_trace";
-
+import {Client} from "./client";
 
 class WatchCatCoreClient implements WatchCatClient {
     protected options: WatchCatOptions
-    protected client: RateLimitedClient
+    protected client: Client
 
     protected meta: object = {}
 
@@ -34,7 +33,7 @@ class WatchCatCoreClient implements WatchCatClient {
             ...defaultOptions,
             ...options
         };
-        this.client = new RateLimitedClient()
+        this.client = new Client(this.options.token, this.options.url)
 
         if (options.debug) {
             console.log(`WatchCat initialized, env=${this.options.env}, url=${this.options.url}`)
@@ -75,20 +74,7 @@ class WatchCatCoreClient implements WatchCatClient {
         )
         if (this.options.debug) console.log({watchcat_payload: payload})
 
-        const options: RequestInit = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                [WatchCatAppHeader]: this.options.token
-            },
-            body: JSON.stringify(payload)
-        }
-        this.client.fetch(this.options.url, options).then((response: Response) => {
-            if (!response.ok) {
-                response.json().then(err => console.error({err}))
-            }
-        })
+        this.client.sendEvent(payload)
         this.clear()
     }
 
@@ -111,5 +97,6 @@ export {
     Level,
     StackTrace,
     StackFrame,
-    createPayload
+    createPayload,
+    Client
 }

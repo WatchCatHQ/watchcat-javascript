@@ -22,8 +22,6 @@
     },
     "dependencies": {
         "@watchcathq/core": "*",
-        "axios": "^1.3.5",
-        "axios-retry": "^3.4.0",
         "source-map": "^0.7.4"
     }
 }
