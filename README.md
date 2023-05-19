@@ -6,27 +6,27 @@ Monorepo with all Javascript SDKs for [watchcat.io](https://watchcat.io).
 
 ### Frontend/browser
 
-- `@watchcathq/browser` - [packages/browser/README.md](packages/browser/README.md)
-- `@watchcathq/react` - [packages/react/README.md](packages/react/README.md)
-- `@watchcathq/vue` - [packages/vue/README.md](packages/vue/README.md)
+- [@watchcathq/browser](packages/browser/README.md)
+- [@watchcathq/react](packages/react/README.md)
+- [@watchcathq/vue](packages/vue/README.md)
 
 ### Backend/server
 
-- `@watchcathq/node` - [packages/node/README.md](packages/node/README.md)
-- `@watchcathq/express` - [packages/express/README.md](packages/express/README.md)
-- `@watchcathq/fastify` - [packages/fastify/README.md](packages/fastify/README.md)
+- [@watchcathq/node](packages/node/README.md)
+- [@watchcathq/express](packages/express/README.md)
+- [@watchcathq/fastify](packages/fastify/README.md)
 
 ## Development
 
 [Lerna](https://lerna.js.org/) is used for managing the repository.
 
-### Init
+### Initialization
 
 ```shell
 lerna bootstrap
 ```
 
-Init single package
+Initialization of single package
 ```shell
 lerna bootstrap --scope="@watchcathq/node"
 ```
