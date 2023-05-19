@@ -32,7 +32,7 @@ export class WatchCatNodeClient implements WatchCatServerClient {
         this.client = new Client(this.options.token, this.options.url)
 
         if (options.debug) {
-            console.log(`WatchCat 🐈 Initialized (env=${this.options.env}, url=${this.options.url})`)
+            console.log(`WatchCat Initialized (env=${this.options.env}, url=${this.options.url})`)
         }
 
         if (this.options.monitors !== null) {
