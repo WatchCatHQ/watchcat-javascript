@@ -5,6 +5,8 @@ export const WatchCatPackageNames: string[] = [
     "watchcat.umd.js"
 ]
 
+export const API_BASE_URL = "https://api.watchcat.io"
+
 export interface WatchCatClient {
     exception: (e: Error) => void
     error: (message: string) => void

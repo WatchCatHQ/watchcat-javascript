@@ -1,4 +1,4 @@
-import {Client, createPayload, Level, StackTrace, WatchCatServerClient, WatchCatServerOptions} from "@watchcathq/core";
+import {Client, createPayload, Level, StackTrace, WatchCatServerClient, WatchCatServerOptions, API_BASE_URL} from "@watchcathq/core";
 import {parseStackTrace} from "./stack_trace";
 import SourceMaps from "./source_maps";
 
@@ -15,7 +15,7 @@ export class WatchCatNodeClient implements WatchCatServerClient {
 
     constructor(options: Partial<WatchCatServerOptions>) {
         const defaultOptions: WatchCatServerOptions = {
-            url: "https://api.watchcat.io",
+            url: API_BASE_URL,
             env: process.env.NODE_ENV || "development",
             token: "",
             debug: false,

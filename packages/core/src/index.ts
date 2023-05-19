@@ -9,7 +9,8 @@ import {
     MonitorInterval,
     Level,
     StackTrace,
-    StackFrame
+    StackFrame,
+    API_BASE_URL
 } from "./types";
 import {createPayload} from "./payload";
 import {parseStackTrace} from "./stack_trace";
@@ -23,7 +24,7 @@ class WatchCatCoreClient implements WatchCatClient {
 
     constructor(options: Partial<WatchCatOptions>) {
         const defaultOptions: WatchCatOptions = {
-            url: "https://api.watchcat.io/api/event.in",
+            url: API_BASE_URL,
             env: "development",
             token: "",
             debug: false,
@@ -98,5 +99,6 @@ export {
     StackTrace,
     StackFrame,
     createPayload,
-    Client
+    Client,
+    API_BASE_URL
 }
