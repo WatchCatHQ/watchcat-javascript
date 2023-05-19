@@ -1,6 +1,6 @@
 {
     "name": "@watchcathq/node",
-    "version": "1.0.0-alpha.9",
+    "version": "1.0.0-alpha.10",
     "author": "hello@watchcat.io",
     "type": "commonjs",
     "main": "dist/index.js",
