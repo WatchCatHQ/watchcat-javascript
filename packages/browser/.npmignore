@@ -10,3 +10,5 @@ src
 # Files
 .gitignore
 rollup.config.js
+tsconfig.esm.json
+tsconfig.json

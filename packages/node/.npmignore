@@ -2,3 +2,5 @@ src/
 node_modules/
 examples/
 .idea/
+tsconfig.esm.json
+tsconfig.json
